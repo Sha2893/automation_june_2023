@@ -56,4 +56,26 @@ variable "inbound_rules_web" {
 
 }
 
+variable "inbound_rules_application" {
+  description = "ingress rule for security group of application server"
+  type = list(object({
+    port        = number
+    description = string
+    protocol    = string
+  }))
+
+  default = [
+    {
+      port        = 8080
+      description = "this is for app hosting"
+      protocol    = "tcp"
+  }]
+}
+
+variable "key_name" {
+  type        = string
+  description = "key pair name"
+  default     = "deployer-key"
+}
+
  
